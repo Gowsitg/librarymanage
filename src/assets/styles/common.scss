@@ -1,0 +1,113 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$desid-price-primary: mat.define-palette(mat.$indigo-palette);
+$desid-price-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$desid-price-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$desid-price-theme: mat.define-light-theme((
+  color: (
+    primary: $desid-price-primary,
+    accent: $desid-price-accent,
+    warn: $desid-price-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($desid-price-theme);
+
+/* You can add global styles to this file, and also import other style files */
+
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+ 
+$basefont: 16;
+$max: 50;
+$offset: 1;
+$unit: "rem";
+
+@mixin list-loop($className, $styleName) {
+ $i: 0;
+
+ @while $i <=$max {
+   #{$className + $i} {
+     #{$styleName}: #{($i) / ($basefont) + $unit} !important;
+   }
+
+   $i: $i + $offset;
+ }
+}
+
+@import 'ngx-toastr/toastr';
+
+@include list-loop(".fs-", "font-size");
+@include list-loop(".lh-", "line-height");
+@include list-loop(".ht-", "height");
+@include list-loop(".wh-", "width");
+@include list-loop(".p-t-", "padding-top");
+@include list-loop(".p-b-", "padding-bottom");
+@include list-loop(".p-l-", "padding-left");
+@include list-loop(".p-r-", "padding-right");
+@include list-loop(".m-t-", "margin-top");
+@include list-loop(".m-b-", "margin-bottom");
+@include list-loop(".m-l-", "margin-left");
+@include list-loop(".m-r-", "margin-right");
+@include list-loop(".pd-", "padding");
+@include list-loop(".m-", "margin");
+
+.cr-pointer {
+  cursor: pointer;
+}
+
+.mat-mdc-raised-button {
+  border-radius: 4px;
+  font-size: 16px;
+  box-shadow: none;
+}
+
+.commonScss {
+  width: 60%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.toolbar {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  background-color: #1976d2;
+  color: white;
+}
+
+.disabledAction {
+  pointer-events: none;
+}
+
+.custom-dialog-container {
+  min-width: 450px;
+   .mat-mdc-dialog-surface {
+    padding: 30px;
+   }
+}
+
+.booksInfo {
+  gap: 10px;
+}

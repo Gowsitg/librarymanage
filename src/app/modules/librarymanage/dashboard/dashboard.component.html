@@ -1,0 +1,75 @@
+<div fxLayout="column">
+  <div class="toolbar" role="banner" fxFlex="100" fxLayout="row" fxLayoutAlign="space-between center">
+    <div class="m-l-10">
+      <span *ngIf="userData.role == '1'">Admin Dashboard</span>
+      <span *ngIf="userData.role == '2'">User Dashboard</span>
+    </div>
+    <div class="m-r-10">
+      <span>{{userData.name}}</span>
+      <button mat-icon-button [matMenuTriggerFor]="menu"><mat-icon>arrow_drop_down_circle</mat-icon></button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="editprogile(userData.id)">Edit Profile</button>
+        <button mat-menu-item (click)="logout()">Logout</button>
+      </mat-menu>
+    </div>
+</div>
+
+<section class="m-t-30"  fxLayoutAlign="center center">
+   <div fxLayout="column" fxFlex="90">
+    <div fxFlex="100" fxLayoutAlign="end center" *ngIf="this.userData.role == '1'">
+      <button mat-raised-button type="button" color="primary" (click)="add()">Add Book</button>
+   </div>
+    <mat-table [dataSource]="dataSource"> 
+        <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef> S No. </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+          </ng-container>
+        <ng-container matColumnDef="bookid">
+            <mat-header-cell *matHeaderCellDef>Book ID</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.bookid}} </mat-cell>
+          </ng-container>
+        <ng-container matColumnDef="bookname">
+            <mat-header-cell *matHeaderCellDef>Book Name</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.bookname}} </mat-cell>
+          </ng-container>
+        <ng-container matColumnDef="authorname">
+            <mat-header-cell *matHeaderCellDef>Auther Name</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.authorname}} </mat-cell>
+          </ng-container>
+        <!-- <ng-container matColumnDef="added">
+            <mat-header-cell *matHeaderCellDef>ADD Date </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.added | date: 'dd/MM/yyyy'}} </mat-cell>
+          </ng-container> --> 
+        <ng-container matColumnDef="borrow">
+            <mat-header-cell *matHeaderCellDef>Borrowed</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.borrow | date: 'dd/MM/yyyy'}} </mat-cell>
+          </ng-container>
+        <ng-container matColumnDef="return">
+            <mat-header-cell *matHeaderCellDef>Return</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.return | date: 'dd/MM/yyyy'}} </mat-cell>
+          </ng-container>
+        <ng-container matColumnDef="added">
+            <mat-header-cell *matHeaderCellDef>ADD Date </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.added | date: 'dd/MM/yyyy'}} </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="action" stickyEnd>
+            <mat-header-cell *matHeaderCellDef>Action</mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              <button mat-icon-button [matMenuTriggerFor]="menuAction"><mat-icon>more_vert</mat-icon></button>
+              <mat-menu #menuAction="matMenu">
+                <button mat-menu-item (click)="edit(element)" *ngIf="this.userData.role == '1'">Edit</button>
+                <button mat-menu-item (click)="buy(element, 1)" *ngIf="this.userData.role == '2' && element.status == null">Buy</button>
+                <button mat-menu-item (click)="buy(element, 1)" *ngIf="this.userData.role == '2' && element.status == 2">Buy</button>
+                <button mat-menu-item (click)="retBook(element,currentid, 2)" *ngIf="this.userData.role == '2' && element.status == 1">Returned</button>
+                <button mat-menu-item (click)="View(element.bookid)" *ngIf="this.userData.role == '1'">View</button>
+                <button mat-menu-item (click)="Viewbook(element.bookid,currentid)" *ngIf="this.userData.role == '2' && element.status == 1">View</button>
+              </mat-menu>
+            </mat-cell>
+          </ng-container>
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+   </div>
+
+</section>
+</div>

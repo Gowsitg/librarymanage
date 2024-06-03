@@ -1,0 +1,58 @@
+<div class="borrow m-20" fxLayout="column" *ngIf="role==1"> 
+     <div class="booksInfo" fxLayout="row" fxLayoutAlign="space-between center" >
+        <p class="m-0">Book ID  - <span>{{this.borrowedBooks.bookdata.bookid}}</span></p>
+        <p class="m-0">Book Name  - <span>{{this.borrowedBooks.bookdata.bookname}}</span></p>
+        <p class="m-0">Author Name - <span>{{this.borrowedBooks.bookdata.authorname}}</span></p>
+     </div>
+      
+     <mat-table [dataSource]="dataSource" class="m-t-20"> 
+        <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef> S No. </mat-header-cell>
+            <mat-cell *matCellDef="let element, let i = index">{{i + 1}} </mat-cell>
+          </ng-container>
+        <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef>User name</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.buyerdata.name}} </mat-cell>
+          </ng-container>
+        <ng-container matColumnDef="emailid">
+            <mat-header-cell *matHeaderCellDef>User Email Id</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.buyerdata.emailid}} </mat-cell>
+          </ng-container>
+        <ng-container matColumnDef="mobilenumber">
+            <mat-header-cell *matHeaderCellDef>Mobile Number</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.buyerdata.mobilenumber}} </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="status">
+            <mat-header-cell *matHeaderCellDef>Status</mat-header-cell>
+            <mat-cell *matCellDef="let element"><span *ngIf="element.status == 1">Borrowed</span><span *ngIf="element.status == 2">Return</span></mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="borrow">
+            <mat-header-cell *matHeaderCellDef>Borrowed</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.borrowed | date: 'dd/MM/yyyy'}} </mat-cell>
+          </ng-container>
+        <ng-container matColumnDef="return">
+            <mat-header-cell *matHeaderCellDef>Return</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.returned | date: 'dd/MM/yyyy'}} </mat-cell>
+          </ng-container>
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+   
+    
+</div>
+
+<div class="borrow m-20" fxLayout="column" *ngIf="role==2"> 
+    <div class="booksInfo" fxLayout="column" fxLayoutAlign="space-between start" fxLayoutGap="10px">
+       <p class="m-0">Book ID  - <span>{{this.booksinfo.bookdata.bookid}}</span></p>
+       <p class="m-0">Book Name  - <span>{{this.booksinfo.bookdata.bookname}}</span></p>
+       <p class="m-0">Author Name - <span>{{this.booksinfo.bookdata.authorname}}</span></p>
+       <p class="m-0">Added on - <span>{{this.booksinfo.bookdata.added | date: 'dd/MM/yyyy'}}</span></p>
+       <p class="m-0">Borrowed - <span>{{this.booksinfo.borrowed | date: 'dd/MM/yyyy'}}</span></p>
+       <p class="m-0">Returned - <span>{{this.booksinfo.returned | date: 'dd/MM/yyyy'}}</span></p>
+       <p class="m-0">Status - <span *ngIf="this.booksinfo.status == 1">Borrowed</span><span *ngIf="this.booksinfo.status == 2">Returned</span></p>
+    </div>
+    <div fxFlex="100" fxLayoutAlign="end end">
+        <button mat-raised-button (click)="back()">Back</button>
+    
+      </div>
+</div>

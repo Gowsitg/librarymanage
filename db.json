@@ -1,0 +1,432 @@
+{
+  "regdetaile": [
+    {
+      "name": "gowsith",
+      "emailid": "gowsith23@gmail.com",
+      "mobilenumber": "0080980989",
+      "role": "1",
+      "password": "111111",
+      "confirmpassword": "111111",
+      "id": 1
+    },
+    {
+      "name": "gowtham",
+      "emailid": "gowtham@gmail.com",
+      "mobilenumber": "0088098098",
+      "role": "2",
+      "password": "111111",
+      "confirmpassword": "111111",
+      "id": 2
+    },
+    {
+      "name": "raghul",
+      "emailid": "raghul@gmail.com",
+      "mobilenumber": "9987987987",
+      "role": "2",
+      "password": "111111",
+      "confirmpassword": "111111",
+      "id": 3
+    }
+  ],
+  "bookDetails": [
+    {
+      "bookid": "78",
+      "bookname": "KGF",
+      "authorname": "KGF",
+      "stock": "14",
+      "added": "2024-06-02T18:30:00.000Z",
+      "id": 1
+    },
+    {
+      "bookid": "23",
+      "bookname": "KRG",
+      "authorname": "KRG",
+      "stock": "3",
+      "added": "2024-06-03T18:30:00.000Z",
+      "id": 2
+    },
+    {
+      "bookid": "78",
+      "bookname": "RGF",
+      "authorname": "RGF",
+      "stock": "9",
+      "added": "2024-06-28T18:30:00.000Z",
+      "id": 3
+    }
+  ],
+  "userBooks": [
+    {
+      "78": {
+        "bookdata": {
+          "bookid": "78",
+          "bookname": "KGF",
+          "authorname": "KGF",
+          "stock": "14",
+          "added": "2024-06-02T18:30:00.000Z",
+          "id": 1,
+          "status": 1,
+          "borrow": "2024-06-03T05:02:15.268Z"
+        },
+        "buyerdata": {
+          "name": "gowtham",
+          "emailid": "gowtham@gmail.com",
+          "mobilenumber": "0088098098",
+          "role": "2",
+          "password": "111111",
+          "confirmpassword": "111111",
+          "id": 2
+        },
+        "status": 2,
+        "borrowed": "2024-06-03T05:02:15.268Z",
+        "returned": "2024-06-03T05:02:22.009Z"
+      },
+      "id": 1
+    },
+    {
+      "78": {
+        "bookdata": {
+          "bookid": "78",
+          "bookname": "KGF",
+          "authorname": "KGF",
+          "stock": "14",
+          "added": "2024-06-02T18:30:00.000Z",
+          "id": 1
+        },
+        "buyerdata": {
+          "name": "gowtham",
+          "emailid": "gowtham@gmail.com",
+          "mobilenumber": "0088098098",
+          "role": "2",
+          "password": "111111",
+          "confirmpassword": "111111",
+          "id": 2
+        },
+        "status": 1,
+        "borrowed": "2024-06-03T05:03:16.822Z"
+      },
+      "id": 2
+    },
+    {
+      "78": {
+        "bookdata": {
+          "bookid": "78",
+          "bookname": "KGF",
+          "authorname": "KGF",
+          "stock": "14",
+          "added": "2024-06-02T18:30:00.000Z",
+          "id": 1,
+          "status": 1,
+          "borrow": "2024-06-03T05:03:32.136Z"
+        },
+        "buyerdata": {
+          "name": "gowtham",
+          "emailid": "gowtham@gmail.com",
+          "mobilenumber": "0088098098",
+          "role": "2",
+          "password": "111111",
+          "confirmpassword": "111111",
+          "id": 2
+        },
+        "status": 2,
+        "borrowed": "2024-06-03T05:03:32.136Z",
+        "returned": "2024-06-03T05:03:34.620Z"
+      },
+      "id": 3
+    },
+    {
+      "78": {
+        "bookdata": {
+          "bookid": "78",
+          "bookname": "KGF",
+          "authorname": "KGF",
+          "stock": "14",
+          "added": "2024-06-02T18:30:00.000Z",
+          "id": 1,
+          "status": 1,
+          "borrow": "2024-06-03T05:04:12.679Z"
+        },
+        "buyerdata": {
+          "name": "raghul",
+          "emailid": "raghul@gmail.com",
+          "mobilenumber": "9987987987",
+          "role": "2",
+          "password": "111111",
+          "confirmpassword": "111111",
+          "id": 3
+        },
+        "status": 2,
+        "borrowed": "2024-06-03T05:04:12.679Z",
+        "returned": "2024-06-03T05:04:26.864Z"
+      },
+      "id": 4
+    },
+    {
+      "23": {
+        "bookdata": {
+          "bookid": "23",
+          "bookname": "KRG",
+          "authorname": "KRG",
+          "stock": "3",
+          "added": "2024-06-03T18:30:00.000Z",
+          "id": 2
+        },
+        "buyerdata": {
+          "name": "raghul",
+          "emailid": "raghul@gmail.com",
+          "mobilenumber": "9987987987",
+          "role": "2",
+          "password": "111111",
+          "confirmpassword": "111111",
+          "id": 3
+        },
+        "status": 1,
+        "borrowed": "2024-06-03T05:05:24.755Z"
+      },
+      "id": 5
+    },
+    {
+      "23": {
+        "bookdata": {
+          "bookid": "23",
+          "bookname": "KRG",
+          "authorname": "KRG",
+          "stock": "3",
+          "added": "2024-06-03T18:30:00.000Z",
+          "id": 2
+        },
+        "buyerdata": {
+          "name": "gowtham",
+          "emailid": "gowtham@gmail.com",
+          "mobilenumber": "0088098098",
+          "role": "2",
+          "password": "111111",
+          "confirmpassword": "111111",
+          "id": 2
+        },
+        "status": 1,
+        "borrowed": "2024-06-03T05:05:41.523Z"
+      },
+      "id": 6
+    },
+    {
+      "23": {
+        "bookdata": {
+          "bookid": "23",
+          "bookname": "KRG",
+          "authorname": "KRG",
+          "stock": "3",
+          "added": "2024-06-03T18:30:00.000Z",
+          "id": 2
+        },
+        "buyerdata": {
+          "name": "gowtham",
+          "emailid": "gowtham@gmail.com",
+          "mobilenumber": "0088098098",
+          "role": "2",
+          "password": "111111",
+          "confirmpassword": "111111",
+          "id": 2
+        },
+        "status": 1,
+        "borrowed": "2024-06-03T05:08:22.009Z"
+      },
+      "id": 7
+    },
+    {
+      "78": {
+        "bookdata": {
+          "bookid": "78",
+          "bookname": "KGF",
+          "authorname": "KGF",
+          "stock": "14",
+          "added": "2024-06-02T18:30:00.000Z",
+          "id": 1
+        },
+        "buyerdata": {
+          "name": "gowtham",
+          "emailid": "gowtham@gmail.com",
+          "mobilenumber": "0088098098",
+          "role": "2",
+          "password": "111111",
+          "confirmpassword": "111111",
+          "id": 2
+        },
+        "status": 1,
+        "borrowed": "2024-06-03T05:11:31.838Z"
+      },
+      "id": 8
+    },
+    {
+      "23": {
+        "bookdata": {
+          "bookid": "23",
+          "bookname": "KRG",
+          "authorname": "KRG",
+          "stock": "3",
+          "added": "2024-06-03T18:30:00.000Z",
+          "id": 2
+        },
+        "buyerdata": {
+          "name": "gowtham",
+          "emailid": "gowtham@gmail.com",
+          "mobilenumber": "0088098098",
+          "role": "2",
+          "password": "111111",
+          "confirmpassword": "111111",
+          "id": 2
+        },
+        "status": 1,
+        "borrowed": "2024-06-03T05:24:29.073Z"
+      },
+      "id": 9
+    },
+    {
+      "78": {
+        "bookdata": {
+          "bookid": "78",
+          "bookname": "RGF",
+          "authorname": "RGF",
+          "stock": "9",
+          "added": "2024-06-28T18:30:00.000Z",
+          "id": 3,
+          "status": 1,
+          "borrow": "2024-06-03T05:24:55.039Z"
+        },
+        "buyerdata": {
+          "name": "gowtham",
+          "emailid": "gowtham@gmail.com",
+          "mobilenumber": "0088098098",
+          "role": "2",
+          "password": "111111",
+          "confirmpassword": "111111",
+          "id": 2
+        },
+        "status": 2,
+        "borrowed": "2024-06-03T05:24:55.039Z",
+        "returned": "2024-06-03T05:25:28.790Z"
+      },
+      "id": 10
+    },
+    {
+      "78": {
+        "bookdata": {
+          "bookid": "78",
+          "bookname": "KGF",
+          "authorname": "KGF",
+          "stock": "14",
+          "added": "2024-06-02T18:30:00.000Z",
+          "id": 1
+        },
+        "buyerdata": {
+          "name": "gowtham",
+          "emailid": "gowtham@gmail.com",
+          "mobilenumber": "0088098098",
+          "role": "2",
+          "password": "111111",
+          "confirmpassword": "111111",
+          "id": 2
+        },
+        "status": 1,
+        "borrowed": "2024-06-03T05:25:44.327Z",
+        "returned": "2024-06-03T05:25:28.790Z"
+      },
+      "id": 11
+    },
+    {
+      "78": {
+        "bookdata": {
+          "bookid": "78",
+          "bookname": "KGF",
+          "authorname": "KGF",
+          "stock": "14",
+          "added": "2024-06-02T18:30:00.000Z",
+          "id": 1
+        },
+        "buyerdata": {
+          "name": "gowtham",
+          "emailid": "gowtham@gmail.com",
+          "mobilenumber": "0088098098",
+          "role": "2",
+          "password": "111111",
+          "confirmpassword": "111111",
+          "id": 2
+        },
+        "status": 1,
+        "borrowed": "2024-06-03T05:28:32.406Z"
+      },
+      "id": 12
+    },
+    {
+      "78": {
+        "bookdata": {
+          "bookid": "78",
+          "bookname": "KGF",
+          "authorname": "KGF",
+          "stock": "14",
+          "added": "2024-06-02T18:30:00.000Z",
+          "id": 1
+        },
+        "buyerdata": {
+          "name": "gowtham",
+          "emailid": "gowtham@gmail.com",
+          "mobilenumber": "0088098098",
+          "role": "2",
+          "password": "111111",
+          "confirmpassword": "111111",
+          "id": 2
+        },
+        "status": 1,
+        "borrowed": "2024-06-03T05:31:47.520Z"
+      },
+      "id": 13
+    },
+    {
+      "78": {
+        "bookdata": {
+          "bookid": "78",
+          "bookname": "KGF",
+          "authorname": "KGF",
+          "stock": "14",
+          "added": "2024-06-02T18:30:00.000Z",
+          "id": 1
+        },
+        "buyerdata": {
+          "name": "gowtham",
+          "emailid": "gowtham@gmail.com",
+          "mobilenumber": "0088098098",
+          "role": "2",
+          "password": "111111",
+          "confirmpassword": "111111",
+          "id": 2
+        },
+        "status": 1,
+        "borrowed": "2024-06-03T05:32:02.866Z"
+      },
+      "id": 14
+    },
+    {
+      "78": {
+        "bookdata": {
+          "bookid": "78",
+          "bookname": "KGF",
+          "authorname": "KGF",
+          "stock": "14",
+          "added": "2024-06-02T18:30:00.000Z",
+          "id": 1
+        },
+        "buyerdata": {
+          "name": "gowtham",
+          "emailid": "gowtham@gmail.com",
+          "mobilenumber": "0088098098",
+          "role": "2",
+          "password": "111111",
+          "confirmpassword": "111111",
+          "id": 2
+        },
+        "status": 1,
+        "borrowed": "2024-06-03T05:32:09.806Z"
+      },
+      "id": 15
+    }
+  ]
+}

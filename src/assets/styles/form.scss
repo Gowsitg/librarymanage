@@ -1,0 +1,18 @@
+//mat-form scss - start
+.mat-mdc-form-field {
+   margin-bottom: 14px !important;
+}
+.mat-mdc-form-field-error {
+  font-size: 13px;
+} 
+
+.mdc-floating-label--required:not(.mdc-floating-label--hide-required-marker)::after {
+   color: #f44336;
+}
+
+.mdc-floating-label {
+  mat-label {
+    font-size: 14px;
+  }
+}
+//mat-form scss  - end
