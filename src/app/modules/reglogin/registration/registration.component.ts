@@ -93,7 +93,7 @@ import { ModuleserService } from '../../moduleser.service';
    }
 
   loginaccount() {
-    sessionStorage.setItem('userid', this.productId.toString());
+    // sessionStorage.setItem('userid', this.productId.toString());
     this.router.navigate(['/admin/login']);
   }
 

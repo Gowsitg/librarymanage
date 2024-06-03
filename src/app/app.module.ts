@@ -9,6 +9,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from './material-modules';
+import { CommonModule, NgStyle, NgIf } from '@angular/common';
 
 @NgModule({
   declarations: [
