@@ -14,15 +14,62 @@
     </div>
 </div>
 
-<section class="m-t-30"  fxLayoutAlign="center center">
+<section class="m-t-30"  fxLayoutAlign="center center" *ngIf="this.userData.role == 1">
    <div fxLayout="column" fxFlex="90">
-    <div fxFlex="100" fxLayoutAlign="end center" *ngIf="this.userData.role == '1'">
-      <button mat-raised-button type="button" color="primary" (click)="add()">Add Book</button>
+    <div fxFlex="100" fxLayoutAlign="end center" >
+      <button mat-raised-button type="button" color="primary" (click)="add(this.userData.id)">Add Book</button>
    </div>
     <mat-table [dataSource]="dataSource"> 
         <ng-container matColumnDef="id">
             <mat-header-cell *matHeaderCellDef> S No. </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+            <mat-cell *matCellDef="let element; let i = index"> {{ i + 1}} </mat-cell>
+          </ng-container>
+        <ng-container matColumnDef="bookid">
+            <mat-header-cell *matHeaderCellDef>Book ID</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.bookdata.bookid}} </mat-cell>
+          </ng-container>
+        <ng-container matColumnDef="bookname">
+            <mat-header-cell *matHeaderCellDef>Book Name</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.bookdata.bookname}} </mat-cell>
+          </ng-container>
+        <ng-container matColumnDef="authorname">
+            <mat-header-cell *matHeaderCellDef>Auther Name</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.bookdata.authorname}} </mat-cell>
+          </ng-container>
+        <ng-container matColumnDef="borrow">
+            <mat-header-cell *matHeaderCellDef>Borrowed</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.borrow | date: 'dd/MM/yyyy'}} </mat-cell>
+          </ng-container>
+        <ng-container matColumnDef="return">
+            <mat-header-cell *matHeaderCellDef>Return</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.return | date: 'dd/MM/yyyy'}} </mat-cell>
+          </ng-container>
+        <ng-container matColumnDef="added">
+            <mat-header-cell *matHeaderCellDef>ADD Date </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.bookdata.added | date: 'dd/MM/yyyy'}} </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="action" stickyEnd>
+            <mat-header-cell *matHeaderCellDef>Action</mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              <button mat-icon-button [matMenuTriggerFor]="menuAction"><mat-icon>more_vert</mat-icon></button>
+              <mat-menu #menuAction="matMenu">
+                <button mat-menu-item (click)="edit(element.bookdata)" >Edit</button>
+                <button mat-menu-item (click)="View(element.bookdata.bookid)" >View</button>
+              </mat-menu>
+            </mat-cell>
+          </ng-container>
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+   </div>
+
+</section>
+<section class="m-t-30"  fxLayoutAlign="center center" *ngIf="this.userData.role == 2">
+   <div fxLayout="column" fxFlex="90">
+    <mat-table [dataSource]="dataSource"> 
+        <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef> S No. </mat-header-cell>
+            <mat-cell *matCellDef="let element; let i = index"> {{ i + 1}} </mat-cell>
           </ng-container>
         <ng-container matColumnDef="bookid">
             <mat-header-cell *matHeaderCellDef>Book ID</mat-header-cell>
@@ -54,15 +101,12 @@
           </ng-container>
           <ng-container matColumnDef="action" stickyEnd>
             <mat-header-cell *matHeaderCellDef>Action</mat-header-cell>
-            <mat-cell *matCellDef="let element">
+            <mat-cell *matCellDef="let element; let i = index">
               <button mat-icon-button [matMenuTriggerFor]="menuAction"><mat-icon>more_vert</mat-icon></button>
               <mat-menu #menuAction="matMenu">
-                <button mat-menu-item (click)="edit(element)" *ngIf="this.userData.role == '1'">Edit</button>
-                <button mat-menu-item (click)="buy(element, 1)" *ngIf="this.userData.role == '2' && element.status == null">Buy</button>
-                <button mat-menu-item (click)="buy(element, 1)" *ngIf="this.userData.role == '2' && element.status == 2">Buy</button>
-                <button mat-menu-item (click)="retBook(element,currentid, 2)" *ngIf="this.userData.role == '2' && element.status == 1">Returned</button>
-                <button mat-menu-item (click)="View(element.bookid)" *ngIf="this.userData.role == '1'">View</button>
-                <button mat-menu-item (click)="Viewbook(element.bookid,currentid)" *ngIf="this.userData.role == '2' && element.status == 1">View</button>
+                <button mat-menu-item (click)="buy(element, 1,element.id)" >Buy</button>
+                <button mat-menu-item (click)="retBook(element, 2,'rtn')" >Returned</button>
+                <button mat-menu-item (click)="retBook(element,1,'view')" >View</button>
               </mat-menu>
             </mat-cell>
           </ng-container>

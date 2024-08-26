@@ -20,14 +20,18 @@ import { ModuleserService } from '../../moduleser.service';
   constructor(private toastr: ToastrService,private formbulider: FormBuilder,private authservice: AuthService,private router:Router,private route: ActivatedRoute,private moduleservice: ModuleserService){}
  
    ngOnInit(): void {
-       
-     this.registerForm = this.formbulider.group({
-       name: ['',[Validators.required,Validators.minLength(6)]],
-       emailid: ['',[Validators.required,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
-       mobilenumber: ['',[Validators.required,Validators.minLength(10)]],
+    
+    
+        // console.log(formatDate(date));     
+    
+    this.registerForm = this.formbulider.group({
+       username: ['',[Validators.required,Validators.minLength(6)]],
+       useremail: ['',[Validators.required,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
+       usernumber: ['',[Validators.required,Validators.minLength(1)]],
        role: ['',Validators.required],
        password: ['',[Validators.required,Validators.minLength(6)]],
        confirmpassword: ['',Validators.required],
+       created_at:['']
      },
      {
       validator: ConfirmPasswordValidator("password", "confirmpassword")
@@ -61,6 +65,16 @@ import { ModuleserService } from '../../moduleser.service';
   }
 
   submitForm(): void {
+    const date = new Date();
+    function formatDate(date: Date): string {
+      const year = date.getFullYear();
+      const month = ('0' + (date.getMonth() + 1)).slice(-2); // Months are zero-based
+      const day = ('0' + date.getDate()).slice(-2);
+       
+      return `${year}-${month}-${day}`;
+    }
+      this.registerForm.controls['created_at'].setValue(formatDate(date));
+      this.registerForm.reset();
 
     if(this.registerForm.valid) { 
       this.loader = true;

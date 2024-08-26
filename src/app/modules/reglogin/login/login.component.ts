@@ -20,7 +20,6 @@ export class LoginComponent implements OnInit{
   constructor(private toastr: ToastrService,private formbulider: FormBuilder,private authservice: AuthService,private router:Router){}
  
   ngOnInit(): void {
-    
      this.loginform = this.formbulider.group({
        username: ['',Validators.required],
        password: ['',Validators.required],
@@ -35,20 +34,22 @@ export class LoginComponent implements OnInit{
     if(this.loginform.valid) { 
       this.loader = true;
       this.getValues= false;
+      // console.log(this.loginform.value)
       
-      this.authservice.login(this.fform['username'].value, this.fform['password'].value).subscribe(
-      res =>  {
-        this.loader = false;
-        this.toastr.success('Successfully Login', ' ');
-        this.router.navigate(['/management/dashboard'])
-      },
-
-      error => {
-        this.toastr.warning('Invalid Credentials', ' ');
-         this.getValues= true;
-         this.loader = false;
-      }
-       )
+      this.authservice.login(this.loginform.value).subscribe({
+        next: (res) => {
+          this.loader = false;
+          console.log(res);
+          this.toastr.success('Successfully Login', ' ');
+          // this.router.navigate(['/management/dashboard']);
+        },
+        error: (error) => {
+          this.toastr.warning('Invalid Credentials', ' ');
+          this.getValues = true;
+          this.loader = false;
+        }
+      });
+      
     }
   }
 

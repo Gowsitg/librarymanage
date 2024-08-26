@@ -33,7 +33,7 @@ export class AddbookdetailsComponent implements OnInit{
       added: ['',Validators.required],
     },
     );
-
+    console.log(this.data)
     if(this.data.data) {
       this.edit = true;
       this.addBooks.patchValue({
@@ -55,12 +55,12 @@ export class AddbookdetailsComponent implements OnInit{
 
   }
 
-  submitForm() {
+  submitForm(data: any) {
     if(this.addBooks.valid) {
-      this.moduleservice.addbooks(this.addBooks.value).subscribe(res => {
+      this.moduleservice.addbooks(data,this.addBooks.value).subscribe(res => {
         this.toastr.success('Book Added', ' ');
         this.dialogRef.close();
-      })
+      });
     }
 
   }

@@ -105,6 +105,7 @@ $unit: "rem";
   min-width: 450px;
    .mat-mdc-dialog-surface {
     padding: 30px;
+    max-height: 560px !important;
    }
 }
 

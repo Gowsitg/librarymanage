@@ -10,6 +10,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from './material-modules';
 import { CommonModule, NgStyle, NgIf } from '@angular/common';
+import { JwtModule } from '@auth0/angular-jwt';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,14 @@ import { CommonModule, NgStyle, NgIf } from '@angular/common';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    MaterialModule
+    MaterialModule,
+    JwtModule.forRoot({
+      config:{
+        tokenGetter:() => {
+          return localStorage.getItem('token');
+        }
+      }
+    })
   ],
   exports: [
   ],

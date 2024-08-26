@@ -73,9 +73,9 @@ export class BorrowdetailsComponent implements OnInit{
   }
  }
    getBorrowBook() {
-     this.moduleservice.getborrow(this.currentid).subscribe(res => {
-      this.booksinfo = res[this.BookId];
-      console.log(this.booksinfo);
+     this.moduleservice.getborrow(this.BookId).subscribe(res => {
+      this.booksinfo = res[this.currentid];
+      console.log(res[this.BookId]); 
 
      })
    }

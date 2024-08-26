@@ -20,6 +20,14 @@ export class ModuleserService {
     );
   }
 
+  getuserId(): Observable<any> {
+    return this.http.get<any>(`http://localhost:3000/regdetaile/`).pipe(
+      map(res => {
+        return res;
+      }),
+    );
+  }
+
   getBooks(): Observable<any> {
     return this.http.get<any>(`http://localhost:3000/bookDetails/`).pipe(
       map(res => {
@@ -28,23 +36,33 @@ export class ModuleserService {
     );
   }
 
-  addbooks(value: any): Observable<any> {
-    return this.http.post<any>(`http://localhost:3000/bookDetails`,value).pipe(
+  borrowedBooks(data: any,id:any): Observable<any> {
+    return this.http.post<any>(`http://localhost:3000/bookDetails/${id}`,data).pipe(
       map(res => {
         return res;
       }),
     );
   }
 
-  buyBooks(value: any, buyerdata:any,status: any,borrowed: any,returned: any): Observable<any> {
+  addbooks(data: any,value: any): Observable<any> {
+    const requestData = {
+      [data.id]: {
+        bookdata: value,
+        
+      },
+    }
+    return this.http.post<any>(`http://localhost:3000/bookDetails`,requestData).pipe(
+      map(res => {
+        return res;
+      }),
+    );
+  }
+
+  buyBooks(value: any, buyerdata:any,status: any,borrowed: any,count: any): Observable<any> {
 
     const requestData = {
       [value.bookid]: {
-        bookdata: value,
-        buyerdata: buyerdata,
-        status: status,
-        borrowed: borrowed,
-        returned: returned,
+        bookdata: value,borrowed,status,buyerdata,count
       },
     }
     return this.http.post<any>(`http://localhost:3000/userBooks`, requestData).pipe(
@@ -53,23 +71,40 @@ export class ModuleserService {
       }),
     );
   }
-    returnBooks(value: any, buyerdata:any,currentid: any,status: any,borrowed: any,returned: any): Observable<any> {
+
+  updatebuyBooks(value: any, buyerdata:any,status: any,borrowed: any,count: any,returned: any,crtid: any): Observable<any> {
 
     const requestData = {
       [value.bookid]: {
-        bookdata: value,
-        buyerdata: buyerdata,
-        status: status,
-        borrowed: borrowed,
-        returned: returned,
+        bookdata: value,borrowed,status,buyerdata,count,returned
       },
     }
-    return this.http.put<any>(`http://localhost:3000/userBooks/${currentid}`, requestData).pipe(
+    return this.http.put<any>(`http://localhost:3000/userBooks/${crtid}`, requestData).pipe(
       map(res => {
         return res;
       }),
     );
   }
+  booksBorrowed(): Observable<any> {
+
+    return this.http.get<any>(`http://localhost:3000/userBooks`).pipe(
+      map(res => {
+        return res;
+      }),
+    );
+  }
+  //   returnBooks(value: any): Observable<any> {
+  //     const requestData = {
+  //       [value.bookid]: {
+  //         bookdata: value,borrowed,status,buyerdata,count,
+  //       },
+  //     }
+  //   return this.http.put<any>(`http://localhost:3000/userBooks/${value}`,).pipe(
+  //     map(res => {
+  //       return res;
+  //     }),
+  //   );
+  // }
 
   updatedBooks(id: any,value: any): Observable<any> {
     return this.http.put<any>(`http://localhost:3000/bookDetails/${id}`,value).pipe(
@@ -87,7 +122,7 @@ export class ModuleserService {
     );
   }
 
-  getborrow(id: any): Observable<any> {
+    getborrow(id: any): Observable<any> {
     return this.http.get<any>(`http://localhost:3000/userBooks/${id}`).pipe(
       map(res => {
         return res;

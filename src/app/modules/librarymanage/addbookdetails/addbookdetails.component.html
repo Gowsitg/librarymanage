@@ -14,24 +14,24 @@
         <mat-form-field fxFlex="100" appearance="outline" >  
            <mat-label>Author Name</mat-label>
            <input matInput formControlName="authorname" required>
-           <mat-error *ngIf="form.submitted || f['authorname'].errors?.['required']">Enter Book Name</mat-error>
+           <mat-error *ngIf="form.submitted || f['authorname'].errors?.['required']">Enter Author Name</mat-error>
         </mat-form-field>
         <mat-form-field fxFlex="100" appearance="outline" >  
            <mat-label>Book Stock</mat-label>
            <input matInput formControlName="stock" required>
-           <mat-error *ngIf="form.submitted || f['stock'].errors?.['required']">Enter Book Name</mat-error>
+           <mat-error *ngIf="form.submitted || f['stock'].errors?.['required']">Enter Number of Books</mat-error>
         </mat-form-field>
         <mat-form-field fxFlex="100" appearance="outline" >  
            <mat-label>Added Date</mat-label>
-           <input matInput [matDatepicker]="picker2" formControlName="added" [min]="today">
+           <input matInput [matDatepicker]="picker2" formControlName="added" [min]="today" (click)="picker2.open()">
             <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
             <mat-datepicker #picker2 color="primary"></mat-datepicker>
-           <mat-error *ngIf="form.submitted || f['added'].errors?.['required']">Enter Book Name</mat-error>
+           <mat-error *ngIf="form.submitted || f['added'].errors?.['required']">Select Added Date</mat-error>
         </mat-form-field>
     
         <div fxLayout="row nowrap" fxLayoutAlign="start center" fxLayoutGap="20px">
             <button mat-raised-button type="button" color="secondary" fxFlex="100" class="fs-16 ht-44" (click)="clearForm()" ><span *ngIf="this.edit">Clear</span><span *ngIf="!this.edit">Cancel</span></button>
-            <button mat-raised-button type="submit" color="primary" *ngIf="!this.edit" fxFlex="100" class="fs-16 ht-44" (click)="submitForm()" ><span *ngIf="!loader">Add</span><mat-spinner *ngIf="loader" color="primary" [diameter]="25"></mat-spinner></button>
+            <button mat-raised-button type="submit" color="primary" *ngIf="!this.edit" fxFlex="100" class="fs-16 ht-44" (click)="submitForm(this.data)" ><span *ngIf="!loader">Add</span><mat-spinner *ngIf="loader" color="primary" [diameter]="25"></mat-spinner></button>
             <button mat-raised-button type="submit" color="primary" *ngIf="this.edit" fxFlex="100" class="fs-16 ht-44" (click)="updateForm(this.data.data.id)" ><span *ngIf="!loader">Update</span><mat-spinner *ngIf="loader" color="primary" [diameter]="25"></mat-spinner></button>
         </div>
      </form>  
